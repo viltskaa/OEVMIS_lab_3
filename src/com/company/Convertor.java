@@ -50,6 +50,11 @@ public class Convertor {
   }
 
   public static String ConvertToBinaryCode(String number, int base) {
+    int sign = 0;
+    if (number.charAt(0) == '-') {
+      number = number.substring(1);
+      sign = 1;
+    }
     if (base == 2) return  number;
 
     StringBuilder result = new StringBuilder();
@@ -58,7 +63,7 @@ public class Convertor {
       result.insert(0, number10 % 2);
       number10 /= 2;
     }
-    return String.valueOf(result);
+    return sign == 0 ? String.valueOf(result) : "-" + result;
   }
 
   public static void PrintResult(String number, boolean isNegative, int base) {

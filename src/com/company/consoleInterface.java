@@ -38,7 +38,7 @@ public class consoleInterface {
     public static boolean startCommandBinary() {
         System.out.println("Enter <base> <number> <number> <math operation> and press enter");
         String line = scanner.nextLine();
-        String result;
+        String result = "";
         int base;
         if (line.equals("q")) return false;
         String[] arg = line.split(" ");
@@ -60,10 +60,9 @@ public class consoleInterface {
             System.out.println("Error: invalid input");
             return true;
         }
-
         if (CheckErrorInput(arg[1], base) && CheckErrorInput(arg[2], base)) {
             switch (arg[3]) {
-                case "+" -> result = BinaryMath.binaryAddition(
+                case "+" -> result = BinaryMath.Addition(
                     Convertor.ConvertToBinaryCode(arg[1], base),
                     Convertor.ConvertToBinaryCode(arg[2], base)
                 );
@@ -79,11 +78,7 @@ public class consoleInterface {
                     Convertor.ConvertToBinaryCode(arg[1], base),
                     Convertor.ConvertToBinaryCode(arg[2], base)
                 );
-//                case "%" -> result = BinaryMath.Remainder(
-//                    Convertor.ConvertToBinaryCode(arg[1], base),
-//                    Convertor.ConvertToBinaryCode(arg[2], base)
-//                );
-                default -> result = "Invalid input";
+                default -> System.out.println("Error: invalid operation");
             }
             System.out.println(result);
         }
